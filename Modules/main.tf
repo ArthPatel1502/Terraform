@@ -2,9 +2,9 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_instance" "example" {
-    ami = var.ami_value
-    instance_type = var.instance_type_value
-    subnet_id = var.subnet_id_value
-    associate_public_ip_address = true
+module "ec2_instance" {
+    source = "./modules/ec2_instance"
+    ami_value = "ami-0b6d9d3d33ba97d99"
+    instance_type_value = "t3.micro"
+    subnet_id_value = "subnet-0b960b8bd157bcd73"
 }
